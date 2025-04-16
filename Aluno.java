@@ -50,10 +50,25 @@ public class Aluno extends Pessoa {
     public void adicionarDisciplina(String disciplina) {
         if (disciplinasMatriculadas != null) {
             disciplinasMatriculadas.add(disciplina);
+            System.out.println(disciplina + " adicionada à matrícula de " + getNome() + ".");
         } else {
-            System.out.println("Lista de disciplinas não inicializada.");// Isso não deve acontecer com o novo construtor
+            System.out.println("Lista de disciplinas não inicializada para " + getNome() + ".");
+            // Isso não deve acontecer com o novo construtor
         }
 
+    }
+
+    public void removerDisciplina(String disciplinaParaRemover) {
+        if (disciplinasMatriculadas != null && !disciplinasMatriculadas.isEmpty()) {
+            if (disciplinasMatriculadas.contains(disciplinaParaRemover)) {
+                disciplinasMatriculadas.remove(disciplinaParaRemover);
+                System.out.println(disciplinaParaRemover + " removida da matrícula de " + getNome() + ".");
+            } else {
+                System.out.println(disciplinaParaRemover + " não encontrada na matrícula de " + getNome() + ".");
+            }
+        } else {
+            System.out.println("Nenhuma disciplina matriculada para " + getNome() + ".");
+        }
     }
 
     //usando a anotação @Override para sobrescrevendo o metodo exibirDados()

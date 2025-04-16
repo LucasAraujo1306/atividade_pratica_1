@@ -13,10 +13,28 @@ public class Main {
         );
         aluno1.adicionarDisciplina("Cálculo I");
         aluno1.adicionarDisciplina("Programação Orientada a Objetos");
+        aluno1.adicionarDisciplina("Física Geral");
 
-        System.out.println("--- Dados do Aluno ---");
+        System.out.println("--- Dados do Aluno Antes da Troca ---");
         aluno1.exibirDados();
         System.out.println();
+
+        // Removendo uma disciplina
+        aluno1.removerDisciplina("Física Geral");
+        System.out.println();
+
+        // Adicionando uma nova disciplina
+        aluno1.adicionarDisciplina("Álgebra Linear");
+        System.out.println();
+
+        System.out.println("--- Dados do Aluno Depois da Troca ---");
+        aluno1.exibirDados();
+        System.out.println();
+
+        // Testando a remoção de uma disciplina inexistente
+        aluno1.removerDisciplina("Química");
+        System.out.println();
+
 
         // Testando a classe Professor
         Professor professor1 = new Professor(
