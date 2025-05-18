@@ -5,6 +5,7 @@ public class Aluno extends Pessoa {
     private String matricula;
     private String curso;
     private List<String> disciplinasMatriculadas;
+    private boolean bolsista; // Adicionando o atributo 'bolsista'
 
     // Construtor que recebe as informações básicas e inicializa a lista vazia
     public Aluno(String nome, int idade, String cpf, String matricula, String curso) {
@@ -12,6 +13,7 @@ public class Aluno extends Pessoa {
         this.matricula = matricula;
         this.curso = curso;
         this.disciplinasMatriculadas = new ArrayList<>(); // Inicializa a lista como vazia
+        this.bolsista = false; // Inicializa o atributo 'bolsista' como falso
     }
 
     //Removendo o construtor sem disciplinas, pois agora sempre inicializa com uma lista vazia
@@ -71,6 +73,18 @@ public class Aluno extends Pessoa {
         }
     }
 
+    public boolean isBolsista() {
+        return bolsista;
+    }
+
+    public void setBolsista(boolean bolsista) {
+        this.bolsista = bolsista;
+    }
+
+    public void exibirBolsista() {
+        System.out.println(getNome() + " é " + (bolsista ? "bolsista" : "não bolsista") + ".");
+    }
+
     //usando a anotação @Override para sobrescrevendo o metodo exibirDados()
     @Override
     public void exibirDados(){
@@ -79,6 +93,7 @@ public class Aluno extends Pessoa {
         //Em seguida, adicionamos a exibição da matrícula e do curso específicos do Aluno
         System.out.println("Matricula: "+ matricula);
         System.out.println("Curso: "+ curso);
+        System.out.println("Bolsa: " + (bolsista ? "Sim" : "Não"));
         System.out.println("Disciplinas Matriculadas: ");
         if (disciplinasMatriculadas != null && !disciplinasMatriculadas.isEmpty()) {
             for (String disciplina : disciplinasMatriculadas) {
@@ -87,6 +102,53 @@ public class Aluno extends Pessoa {
         } else {
             System.out.println("Nenhuma disciplina matriculada.");
         }
+    }
+
+    @Override
+    public String toString() {
+        // return "Aluno [nome=" + getNome() + ", idade=" + getIdade() + ", cpf=" + getCpf() +
+        //     ", matrícula=" + matricula + ", curso=" + curso + "]";
+       // Usando StringBuilder para construir a string de forma mais eficiente
+        // e legível, especialmente se houver muitos atributos
+        StringBuilder sb = new StringBuilder();
+        sb.append("Aluno [");
+        sb.append("nome=").append(getNome());
+        sb.append(", idade=").append(getIdade());
+        sb.append(", cpf=").append(getCpf());
+        sb.append(", matrícula=").append(matricula);
+        sb.append(", curso=").append(curso);
+        sb.append(", bolsista=").append(bolsista ? "Sim" : "Não");
+
+        sb.append(", disciplinasMatriculadas=");
+        if (!disciplinasMatriculadas.isEmpty()) {
+            sb.append("[");
+            for (int i = 0; i < disciplinasMatriculadas.size(); i++) {
+                sb.append(disciplinasMatriculadas.get(i));
+                if (i < disciplinasMatriculadas.size() - 1) {
+                    sb.append(", ");
+                }
+            }
+            sb.append("]");
+        } else {
+            sb.append("Nenhuma");
+        }
+        sb.append("]");
+        return sb.toString();
+    
+
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Aluno)) return false;
+        Aluno outro = (Aluno) obj;
+        return getCpf().equals(outro.getCpf());
+    }
+
+    @Override
+    public int hashCode() {
+        return getCpf().hashCode();
     }
     
 }
