@@ -36,7 +36,7 @@ public abstract class Pessoa {
         this.cpf = cpf;
     }
     
-    protected void exibirDadosBasicos() {
+    protected void exibirDados() {
         System.out.println("Nome: " + nome);
         System.out.println("Idade: " + idade);
         System.out.println("CPF: " + cpf);

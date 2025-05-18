@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Aluno extends Pessoa {
     private String matricula;
@@ -88,8 +89,10 @@ public class Aluno extends Pessoa {
     //usando a anotação @Override para sobrescrevendo o metodo exibirDados()
     @Override
     public void exibirDados(){
-        //Chamando o exibirDados da classePessoa
-        super.exibirDados();
+        System.out.println("Nome: " + getNome());
+        System.out.println("Idade: " + getIdade());
+        System.out.println("CPF: " + getCpf());
+        
         //Em seguida, adicionamos a exibição da matrícula e do curso específicos do Aluno
         System.out.println("Matricula: "+ matricula);
         System.out.println("Curso: "+ curso);
@@ -120,7 +123,7 @@ public class Aluno extends Pessoa {
         sb.append(", bolsista=").append(bolsista ? "Sim" : "Não");
 
         sb.append(", disciplinasMatriculadas=");
-        if (!disciplinasMatriculadas.isEmpty()) {
+        if (disciplinasMatriculadas != null && !disciplinasMatriculadas.isEmpty()) {
             sb.append("[");
             for (int i = 0; i < disciplinasMatriculadas.size(); i++) {
                 sb.append(disciplinasMatriculadas.get(i));
