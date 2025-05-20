@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class TecnicoAdministrativo extends Pessoa{
     private String setor;
     private String cargo;
@@ -26,9 +28,36 @@ public class TecnicoAdministrativo extends Pessoa{
     
     @Override
     public void exibirDados(){
-        super.exibirDados();
+        System.out.println("Nome: " + getNome());
+        System.out.println("Idade: " + getIdade());
+        System.out.println("CPF: " + getCpf());
+
         System.out.println("setor: "+setor);
         System.out.println("cargo: "+cargo);
 
+    }
+
+    @Override
+    public String toString() {
+        return "TecnicoAdministrativo{" +
+                "nome='" + getNome() + '\'' +
+                ", idade=" + getIdade() +
+                ", cpf='" + getCpf() + '\'' +
+                ", setor='" + setor + '\'' +
+                ", cargo='" + cargo + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TecnicoAdministrativo)) return false;
+        TecnicoAdministrativo that = (TecnicoAdministrativo) o;
+        return getCpf().equals(that.getCpf());
+    }
+
+    @Override
+    public int hashCode() {
+        return getCpf().hashCode();
     }
 }
