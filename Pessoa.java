@@ -37,11 +37,6 @@ public abstract class Pessoa {
     }
     
     public abstract void exibirDados();
-    // protected void exibirDados() {
-    //     System.out.println("Nome: " + nome);
-    //     System.out.println("Idade: " + idade);
-    //     System.out.println("CPF: " + cpf);
-    // }
 
     //Override: Permite que a classe filha sobrescreva o método da classe pai, garantindo que o comportamento seja específico para cada tipo de pessoa.
     //ToString: Fornece uma representação em string da classe, útil para depuração e exibição de informações.

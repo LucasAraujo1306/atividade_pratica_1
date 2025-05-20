@@ -6,7 +6,7 @@ public class Aluno extends Pessoa {
     private String matricula;
     private String curso;
     private List<String> disciplinasMatriculadas;
-    private boolean bolsista; // Adicionando o atributo 'bolsista'
+    private boolean bolsista; // Adicionando o atributo extra 'bolsista'
 
     // Construtor que recebe as informações básicas e inicializa a lista vazia
     public Aluno(String nome, int idade, String cpf, String matricula, String curso) {
@@ -50,6 +50,14 @@ public class Aluno extends Pessoa {
         this.disciplinasMatriculadas = disciplinasMatriculadas;
     }
 
+    public boolean isBolsista() {
+        return bolsista;
+    }
+
+    public void setBolsista(boolean bolsista) {
+        this.bolsista = bolsista;
+    }
+    
     public void adicionarDisciplina(String disciplina) {
         if (disciplinasMatriculadas != null) {
             disciplinasMatriculadas.add(disciplina);
@@ -74,13 +82,6 @@ public class Aluno extends Pessoa {
         }
     }
 
-    public boolean isBolsista() {
-        return bolsista;
-    }
-
-    public void setBolsista(boolean bolsista) {
-        this.bolsista = bolsista;
-    }
 
     public void exibirBolsista() {
         System.out.println(getNome() + " é " + (bolsista ? "bolsista" : "não bolsista") + ".");
